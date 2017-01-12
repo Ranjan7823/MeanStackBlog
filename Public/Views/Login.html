@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="/Public/css/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    .bs-example{
+      margin: 20px;
+    }
+    .fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 153, 160, 0.11);
+}
+ body{
+   background-color: rgb(107, 201, 236);
+    padding:50px;
+}
+    .container{
+        height: 480px;
+        
+    }
+    .footer{
+        background-color: rgb(107, 201, 236);
+        height: :50px;
+    }
+    .footer p{
+        text-align: center;
+    }
+    .col-centered{
+    float: none;
+    margin: 0 auto;
+}
+</style>
+</head>
+
+</body>
+<div class="login-page">
+  <div class="form">
+   
+    
+
+    <form class="login-form" method="post" action="/login">
+     
+
+ <div class="header">
+        
+          <nav class="fixed-nav-bar">
+              <ul class="nav navbar-nav navbar-right" style="margin-right: 15px;">
+                    <li><a href="/registration">Sign-up</a></li>
+                    <li><a href="/login">Login</a></li>
+                 
+               </ul>
+             </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+                <div class="col-md-3 col-centered">
+                        <div class="text-center"><h3><b>Log In</b></h3></div>
+                                <form id="ajax-login-form" action="#" method="post" role="form" autocomplete="off">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-7">
+                                                <input type="checkbox" tabindex="3" name="remember" id="remember">
+                                                <label for="remember"> Remember Me</label>
+                                            </div>
+                                            <div class="col-xs-5 pull-right">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-info" value="Log In">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                   {{msg}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
+                                </form>
+                            </div>
+                </div>
+        </div>
+                       
+                          
+    <div class="footer">
+    <hr>
+            <footer>
+                <p class="">CopyRight</p>
+            </footer>
+    </div>
+  
+  </div>
+</div>
+
+</body>
+
+</html>
