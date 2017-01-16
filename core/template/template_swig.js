@@ -15,7 +15,17 @@ swig_Template.compileHtml = function(obj,cb){
 	return cb(null,output);
 	
 }
+swig_Template.renderTemplate=function(obj,res){
+	swig_Template.compileHtml(obj,function(err,data){
+			if(err){
+	 			console.log(err)
+				return;
+   			}
+   			res.send(data)
+		
 
+		});
+}
 
 module.exports = swig_Template;
 
