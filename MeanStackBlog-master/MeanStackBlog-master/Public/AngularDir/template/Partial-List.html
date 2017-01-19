@@ -1,0 +1,11 @@
+<div ng-controller="scotchController">
+    <table>
+      <tr ng-repeat="scotch in scotches">
+            <td>{{ scotch.name }}</td>
+            <td>${{ scotch.price }}</td>
+        </tr>
+        </table>
+    </div>
+    <div ng-controller="paragraph">
+    	{{message}}
+    </div>
