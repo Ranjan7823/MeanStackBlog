@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   
  <script type="text/javascript" src="AngularDir/angular/angular.min.js"></script>
   <script type="text/javascript" src="AngularDir/angular/angular-route.min.js"></script>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="AngularDir/appjs/app.js"></script>
   <script type="text/javascript" src="AngularDir/appjs/config.js"></script>
   <script type="text/javascript" src="AngularDir/appjs/route.js"></script>
@@ -31,9 +31,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#/">Home</a></li>
-        <li><a href="#/profile">Profile</a></li>
-        <li><a href="#/AddNewBlog">Add New Blog</a></li>
+        <li class="active"><a ui-sref="/">Home</a></li>
+        <li><a ui-sref="profile">Profile</a></li>
+        <li><a ui-sref="AddNewBlog">Add New Blog</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="">Welcome:</span>{{render.data.username}}</a></li>
@@ -46,7 +46,7 @@
 <div class="container-fluid">
  
   <div class="row content" style="margin-top:50px">
-     <div ng-view ></div>
+     <div ui-view></div>
     </div>
 </div>
 

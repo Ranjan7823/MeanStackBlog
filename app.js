@@ -3,12 +3,13 @@ var app = express()
 var path = require("path");
 var bodyParser = require('body-parser');
 var LoginService = require('./core/service/loginService');
+var BlogService = require('./core/service/blogService');
 // session and cookies
 var session = require('client-sessions');
 
 app.use(bodyParser.urlencoded({ extended: true })); //body parser 
 app.use(express.static(__dirname + '/public'));
-
+app.use(bodyParser.json());
 app.use(session({
   cookieName: 'session',
   secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
@@ -52,6 +53,13 @@ app.post('/login',function(req,res){
 
 app.get('/profile',function(req,res){
 	LoginService.renderProfile(req,res);
+})
+app.get('/fetchBlogsData',function(req,res){
+				BlogService.fetchBlog(req,res);
+		})
+app.post('/NewBlogSave',function(req,res){
+	console.log('---post---'+req.body);
+	BlogService.SaveBlog(req,res);
 })
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

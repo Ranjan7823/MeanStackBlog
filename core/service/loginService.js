@@ -136,6 +136,8 @@ LoginService.Logout=function(req,res){
 	req.session.reset();
 	res.redirect('/');
 }
+// blog save
+
 
 
 

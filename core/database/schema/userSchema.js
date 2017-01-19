@@ -4,5 +4,7 @@ var UserSchema=mongoose.Schema({
 	password:String,
 	email:String
 })
-var User=mongoose.model('user',UserSchema)
-module.exports=User;
+var User = mongoose.model('User',UserSchema)
+module.exports = User;
+
+
