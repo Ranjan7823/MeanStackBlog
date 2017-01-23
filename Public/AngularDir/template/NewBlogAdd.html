@@ -1,3 +1,22 @@
+ <style type=text/css>
+  p {
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+  
+}
+
+ p::before {
+   content: '...';
+   float: right;
+   margin-top: 1.5em;
+}
+.link{
+  cursor: pointer;
+  font-weight: bold;
+  color: #0582b6;
+}
+</style>
   <div class="col-sm-8 col-md-offset-1" ng-controller="CntrlBlog">
     <h2>Add Your Blog</h2>
      <form>
@@ -26,9 +45,17 @@
    <h4><small>RECENT POSTS</small></h4>
       <hr>
       <div ng-repeat="blog in blogDetail">
-        <h2>{{blog.Tittle}}</h2>
-        <h5><span class="glyphicon glyphicon-time"></span> Post by {{blog.name}}, on {{blog.CreatedDate}}.</h5>
+        <h2>{{blog1.Tittle}}</h2>
+
+        <h4>Category : {{blog.Type}}  </h4> <h5><span class="glyphicon glyphicon-time"></span>Post by  <span style="color: #337ab7;font-weight: bold;">{{blog.name}},</span> on {{blog.CreatedDate |date : 'fullDate'}}.</h5>
+
         <p style="text-align:justify;">{{blog.blogText}}</p>
+       <!--  <a ui-sref="AddNewBlog({id: blog1.Tittle})">
+            {{blog.Tittle}}
+        </a> -->
+          <h5><span><span class="link"><a  ui-sref="blogDetail({ id: blog._id})">Read More ...</a></span></h5>
+
+        <hr>
       </div>
       
      
@@ -37,9 +64,9 @@
       <br><br>
 
     </div>
-  
+<!--   
     <a ui-sref=".list" class="btn btn-primary">List</a>
     <a ui-sref=".paragraph" class="btn btn-danger">Paragraph</a>
     
 
-<div ui-view></div> 
+<div ui-view></div>  -->

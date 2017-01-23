@@ -19,6 +19,7 @@
 }
 	 
 </style>
+<div ng-controller="Cntrlprofile">
 	<div class="row">
        <div class="col-md-12">
 
@@ -72,7 +73,7 @@
         <i class="fa fa-user">
         </i>
        </div>
-       <input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control input-md">
+       <input id="Name (Full name)" name="Name (Full name)" ng-model="profile.name" type="text" placeholder="Name (Full name)" class="form-control input-md">
       </div>
 
     
@@ -93,7 +94,7 @@
      <i class="fa fa-birthday-cake"></i>
         
        </div>
-       <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
+       <input id="Date Of Birth" name="Date Of Birth" type="text" ng-model="profile.dob" placeholder="Date Of Birth" class="form-control input-md">
       </div>
   
     
@@ -103,14 +104,14 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Father">Father's name</label>  
+  <label class="col-md-4 control-label" for="Email">Email Id</label>  
   <div class="col-md-4">
   <div class="input-group">
        <div class="input-group-addon">
       <i class="fa fa-male" style="font-size: 20px;"></i>
         
        </div>
-      <input id="Father" name="Father" type="text" placeholder="Father's name" class="form-control input-md">
+      <input id="email" name="email" type="text" placeholder="Email Id" ng-model="profile.email" class="form-control input-md">
 
       </div>
     
@@ -119,14 +120,14 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Mother">Mother's Name</label>  
+  <label class="col-md-4 control-label" for="Mother">Mobile No</label>  
   <div class="col-md-4">
   <div class="input-group">
        <div class="input-group-addon">
       <i class="fa fa-female" style="font-size: 20px;"></i>
         
        </div>
-  <input id="Mother" name="Mother" type="text" placeholder="Mother's Name" class="form-control input-md">
+  <input id="mobile" name="mobile" type="text" placeholder="Mobile No" ng-model="profile.mobile" class="form-control input-md">
 
       </div>
     
@@ -138,7 +139,7 @@
   <label class="col-md-4 control-label" for="Gender">Gender</label>
   <div class="col-md-4"> 
     <label class="radio-inline" for="Gender-0">
-      <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked">
+      <input type="radio" name="Gender" id="Gender-0" value="1" ng-model="profile.gender" checked="checked">
       Male
     </label> 
     <label class="radio-inline" for="Gender-1">
@@ -161,7 +162,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" ></label>  
   <div class="col-md-4">
-  <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
+  <a href="#" class="btn btn-success" ng-click="updateProfile()"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
   <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
     
   </div>
@@ -192,6 +193,6 @@
 
        
    </div>
-
+</div>
 
 

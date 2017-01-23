@@ -4,6 +4,7 @@ var path = require("path");
 var bodyParser = require('body-parser');
 var LoginService = require('./core/service/loginService');
 var BlogService = require('./core/service/blogService');
+var profileService=require('./core/service/profileService');
 // session and cookies
 var session = require('client-sessions');
 
@@ -61,6 +62,22 @@ app.post('/NewBlogSave',function(req,res){
 	console.log('---post---'+req.body);
 	BlogService.SaveBlog(req,res);
 })
+app.get('/getAllBlog',function(req,res){
+	BlogService.getAllBlogFun(req,res);
+})
+// profile service
+app.post('/profileSave',function(req,res){
+
+	profileService.saveProfileDetail(req,res);
+})
+app.get('/getProfile',function(req,res){
+	profileService.getProfileDetail(req,res);
+})
+//-----------Blog Data
+app.post('/getBlogById',function(req,res){
+	BlogService.getBlogDetailById(req,res);
+})
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

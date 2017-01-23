@@ -10,11 +10,23 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/home',
             templateUrl: '../../AngularDir/template/Home.html'
         })
+        .state('profile', {
+            url: '/profile',
+            views: {
+                '': { templateUrl: '../../AngularDir/template/Profile.html' }
+            }
+            
+        })
+        .state('AddNewBlog',{
+            url:'/AddNewBlog',
+            templateUrl:'../../AngularDir/template/NewBlogAdd.html',
+            //controller:'scotchController'
+        })
         
         // nested list with custom controller
 
 
-        .state('home.list', {
+        /*.state('home.list', {
             url: '/list',
             templateUrl: 'partial-home-list.html',
             controller: function($scope) {
@@ -26,40 +38,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('home.paragraph', {
             url: '/paragraph',
             template: 'I could sure use a drink right now.'
-        })
+        })*/
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('profile', {
-            url: '/profile',
-            views: {
-                '': { templateUrl: '../../AngularDir/template/Profile.html' }
-               /* 'columnOne@about': { template: 'Look I am a column!' },
-                'columnTwo@about': { 
-                    templateUrl: 'table-data.html',
-                    controller: 'scotchController'
-                }*/
-            }
-            
+        
+        
+        .state('blogDetail',{
+            url:'/blog/:id',
+            templateUrl:'../../AngularDir/template/blogDetail.html'
         })
-        .state('AddNewBlog',{
-            url:'/AddNewBlog',
-            views:{
-                '':{
-                    templateUrl:'../../AngularDir/template/NewBlogAdd.html'
-                }
-            }
-        })
-        .state('AddNewBlog.list',{
-          // url:'/AddNewBlog',
-            templateUrl:'../../AngularDir/template/Partial-List.html',
-            controller:'scotchController'
-
-            
-        })
-        .state('AddNewBlog.paragraph',{
-           // url:'/AddNewBlog',
-            controller:'paragraph'
-        })
+        
         
 });
 

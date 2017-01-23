@@ -23,22 +23,25 @@ BlogService.SaveBlog=function(req,res){
 			
 			}
 			console.log('data saved to db!');
-			Blogs.find({name:req.session.user.name},function(err,blogs){
+			
+			Blogs.find({name:req.session.user.name}).sort({_id:-1}).exec(function(err,blogs){
 				if(err){
 					console.log(err);
 					return;
 				}
-				console.log(blogs)
-				res.send(blogs);
+				console.log('--get user own blog-'+blogs)
+				res.send(blogs);})
+			
 
-			})
 	
+	//BlogService.fetchBlog ();
 		});
 			
 }
 
+
 BlogService.fetchBlog = function(req,res){
-	Blogs.find({name:req.session.user.name},function(err,blogs){
+	/*Blogs.find({name:req.session.user.name},function(err,blogs){
 				if(err){
 					console.log(err);
 					return;
@@ -46,7 +49,34 @@ BlogService.fetchBlog = function(req,res){
 				//console.log(blogs)
 				res.send(blogs);
 
-			})
+			})*/
 
+Blogs.find({name:req.session.user.name}).sort({_id:-1}).exec(function(err,blogs){
+				if(err){
+					console.log(err);
+					return;
+				}
+				console.log('--get user own blog-'+blogs)
+				res.send(blogs);})
+			
 }
+BlogService.getAllBlogFun=function (req,res){
+	Blogs.find().sort({_id:-1}).exec(function(err,blogs){
+				if(err){
+					console.log(err);
+					return;
+				}
+				//console.log(blogs)
+				res.send(blogs);})
+}
+BlogService.getBlogDetailById=function(req,res){
+	Blogs.find({_id:req.body_id}).exec(function(err,blogs){
+				if(err){
+					console.log(err);
+					return;
+				}
+				console.log('-- single blog-'+blogs)
+				res.send(blogs);})
+}
+
 module.exports=BlogService;

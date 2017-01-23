@@ -6,7 +6,12 @@ var BlogsSchema=mongoose.Schema({
 	Type:{type:String},
 	blogText:{type:String},
 	CreatedDate:{type:Date, default: Date.now},
-	Comments:{type:String}
+	isActive:{type:String,default:'pending'},
+	Comments:{
+		name:{type:String},
+		CommentText:{type:String},
+		CommentsDate:{type:Date, default: Date.now}
+	}
 });
 var Blogs=mongoose.model('blogs',BlogsSchema);
 module.exports=Blogs;

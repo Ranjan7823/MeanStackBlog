@@ -1,0 +1,30 @@
+ <div class="col-sm-8 col-md-offset-1" ng-controller="CntrlBlog">
+    
+      <div ng-repeat="blog in blogDetail">
+        <h2>{{blog1.Tittle}}</h2>
+
+        <h4>Category : {{blog.Type}}  </h4> <h5><span class="glyphicon glyphicon-time"></span>Post by  <span style="color: #337ab7;font-weight: bold;">{{blog.name}},</span> on {{blog.CreatedDate |date : 'fullDate'}}.</h5>
+
+        <p style="text-align:justify;">{{blog.blogText}}</p>
+       <!--  <a ui-sref="AddNewBlog({id: blog1.Tittle})">
+            {{blog.Tittle}}
+        </a> -->
+          <h5><span><span class="link"><a  ui-sref="blogDetail({ id: blog._id})">Read More ...</a></span></h5>
+
+        <hr>
+      </div>
+      <br><br>
+      <h2>Add Your Blog</h2>
+     <form>
+        <div class="form-group">
+          <label for="comment"> Blog Content:</label>
+          <textarea class="form-control" rows="5" ng-model="blog.blogText" id="blogText"></textarea>
+          <button type="button" ng-click="addBlogComment()" class="btn btn-primary" style="margin: 12px 0px;">Add Blog</button>
+       
+    </div>
+    </form>
+
+   <h4><small>RECENT POSTS</small></h4>
+      <hr>
+
+    </div>
