@@ -45,7 +45,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
         .state('blogDetail',{
             url:'/blog/:id',
-            templateUrl:'../../AngularDir/template/blogDetail.html'
+            templateUrl:'../../AngularDir/template/blogDetail.html',
+            controller:'CtrlGetSingleBlog'
         })
         
         

@@ -1,30 +1,34 @@
- <div class="col-sm-8 col-md-offset-1" ng-controller="CntrlBlog">
+ <div class="col-sm-8 col-md-offset-1" ng-controller="CtrlGetSingleBlog">
     
-      <div ng-repeat="blog in blogDetail">
-        <h2>{{blog1.Tittle}}</h2>
+      <div ng-repeat="sblog in singleBlog">
+        <h2>{{sblog.Tittle}}</h2>
 
-        <h4>Category : {{blog.Type}}  </h4> <h5><span class="glyphicon glyphicon-time"></span>Post by  <span style="color: #337ab7;font-weight: bold;">{{blog.name}},</span> on {{blog.CreatedDate |date : 'fullDate'}}.</h5>
+        <h4>Category : {{sblog.Type}}  </h4> <h5><span class="glyphicon glyphicon-time"></span>Post by  <span style="color: #337ab7;font-weight: bold;">{{sblog.name}},</span> on {{sblog.CreatedDate |date : 'fullDate'}}.</h5>
 
-        <p style="text-align:justify;">{{blog.blogText}}</p>
+        <p style="text-align:justify;">{{sblog.blogText}}</p>
        <!--  <a ui-sref="AddNewBlog({id: blog1.Tittle})">
             {{blog.Tittle}}
         </a> -->
-          <h5><span><span class="link"><a  ui-sref="blogDetail({ id: blog._id})">Read More ...</a></span></h5>
-
+       
+          <h3 ng-model="blogObj.id">{{sblog._id}}</h3>
         <hr>
       </div>
       <br><br>
-      <h2>Add Your Blog</h2>
+      <h2>Add Your Comments here ...</h2>
      <form>
         <div class="form-group">
+        
           <label for="comment"> Blog Content:</label>
-          <textarea class="form-control" rows="5" ng-model="blog.blogText" id="blogText"></textarea>
-          <button type="button" ng-click="addBlogComment()" class="btn btn-primary" style="margin: 12px 0px;">Add Blog</button>
+          <textarea class="form-control" rows="5" ng-model="blogObj.CommentText" id="blogText"></textarea>
+          <button type="button" ng-click="addComment()" class="btn btn-primary" style="margin: 12px 0px;">Add Blog</button>
        
     </div>
     </form>
-
-   <h4><small>RECENT POSTS</small></h4>
       <hr>
-
+      <div>
+        <ul ng-repeat="comment in commentdata">
+          <li>Comment By: {{comment.UserCommentname}}  ------ Time: {{comment.CommentsDate}}</li>
+          <li>{{comment.CommentText}}</li>
+        </ul>
+      </div>
     </div>

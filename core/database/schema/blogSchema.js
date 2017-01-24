@@ -8,7 +8,7 @@ var BlogsSchema=mongoose.Schema({
 	CreatedDate:{type:Date, default: Date.now},
 	isActive:{type:String,default:'pending'},
 	Comments:{
-		name:{type:String},
+		UserCommentname:{type:String},
 		CommentText:{type:String},
 		CommentsDate:{type:Date, default: Date.now}
 	}

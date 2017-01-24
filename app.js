@@ -74,10 +74,16 @@ app.get('/getProfile',function(req,res){
 	profileService.getProfileDetail(req,res);
 })
 //-----------Blog Data
-app.post('/getBlogById',function(req,res){
-	BlogService.getBlogDetailById(req,res);
+app.post('/getSingleBlogDetail',function(req,res){
+	BlogService.singleBlogDetailById(req,res);
 })
-
+app.post('/SaveComment',function(req,res){
+	console.log(req.body);
+	BlogService.saveCommentBlog(req,res);
+})
+app.post('/fetchCommentBlogsDetail',function(req,res){
+	BlogService.fetchCommentDetailBlog(req,res);
+})
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

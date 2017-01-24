@@ -37,6 +37,8 @@ app.controller('CntrlBlog',function($scope,$http){
        })
 
 	}
+
+
 })
 app.controller('CtrlGetBlog',function($scope,$http){
       $http.get('/getAllBlog').success(function(data,status,header,config){
@@ -46,6 +48,81 @@ app.controller('CtrlGetBlog',function($scope,$http){
       }).error(function(data,status,header,config){
         console.log(data);
       })
+
+});
+app.controller('CtrlGetSingleBlog',function($scope,$http,$stateParams){
+     
+  console.log($stateParams.id);
+  $scope.singleBlog={};
+   $scope.singleBlogsDetail =function(){
+    var url="/getSingleBlogDetail";
+      var data={id:$stateParams.id};
+      var config={
+        header:{
+          'Content-Type' : 'application/json'
+        }
+      }
+      //console.log(data);
+       $http.post(url,data,config)
+       .success(function (data, status, header, config ){
+        $scope.singleBlog = data;
+        
+        console.log(' single data ....'+$scope.singleBlog);
+       })
+       .error(function(data , status, header,config){
+        console.log(data);
+       })
+   }
+   $scope.singleBlogsDetail();
+
+   // fet all comment
+   $scope.commentdata={};
+    $scope.fetchCommentBlogsDetail =function(){
+    var url="/fetchCommentBlogsDetail";
+      var data={id:$stateParams.id};
+      var config={
+        header:{
+          'Content-Type' : 'application/json'
+        }
+      }
+      //console.log(data);
+       $http.post(url,data,config)
+       .success(function (data, status, header, config ){
+        $scope.commentdata = data;
+        
+        console.log('hjhhhhhhh---------'+data);
+       })
+       .error(function(data , status, header,config){
+        console.log(data);
+       })
+   }
+   $scope.fetchCommentBlogsDetail();
+
+   //
+console.log('id for save comment'+$stateParams.id);
+
+  $scope.blogObj={};
+   console.log('ang- data '+$scope.blogObj.CommentText)
+  $scope.addComment=function(){
+
+    var url='/SaveComment';
+    var data={id:$stateParams.id,
+      CommentText:$scope.blogObj.CommentText};
+   console.log('hjadhajdhajdhajdhaj---'+data)
+    var config={
+      header:{
+        'Content-Type' :'application/json'
+      }
+    }
+    $http.post(url,data,config).success(
+      function(data,status,header,config){
+        console.log('--successs  '+data);
+        $scope.blogObj=data;
+
+    }).error(function(data,status,header,config){
+
+    })
+  }
 
 });
 app.controller('Cntrlprofile',function($scope,$http){
@@ -79,16 +156,5 @@ app.controller('Cntrlprofile',function($scope,$http){
        .error(function(data , status, header,config){
         console.log(data);
        })
-  }
-})
-app.controller('',function($scope,$http){
-  $scope.blogComment={};
-  $scope.GetBlogById=function () {
-    $http.get('/getBlogById').success(function(data){
-      $scope.blogDetail=data;
-      console.log($scope.blogDetail);
-    }).error(function(err){
-      console.log(err);
-    })
   }
 })
