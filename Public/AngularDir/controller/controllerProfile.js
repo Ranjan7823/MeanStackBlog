@@ -78,6 +78,7 @@ app.controller('CtrlGetSingleBlog',function($scope,$http,$stateParams){
    // fet all comment
    $scope.commentdata={};
     $scope.fetchCommentBlogsDetail =function(){
+      debugger;
     var url="/fetchCommentBlogsDetail";
       var data={id:$stateParams.id};
       var config={
@@ -88,6 +89,7 @@ app.controller('CtrlGetSingleBlog',function($scope,$http,$stateParams){
       //console.log(data);
        $http.post(url,data,config)
        .success(function (data, status, header, config ){
+        debugger;
         $scope.commentdata = data;
         
         console.log('hjhhhhhhh---------'+data);
@@ -117,7 +119,7 @@ console.log('id for save comment'+$stateParams.id);
     $http.post(url,data,config).success(
       function(data,status,header,config){
         console.log('--successs  '+data);
-        $scope.blogObj=data;
+        $scope.commentdata=data;
 
     }).error(function(data,status,header,config){
 

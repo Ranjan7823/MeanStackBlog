@@ -10,25 +10,24 @@
             {{blog.Tittle}}
         </a> -->
        
-          <h3 ng-model="blogObj.id">{{sblog._id}}</h3>
+        <!--   <h3 ng-model="blogObj.id">{{sblog._id}}</h3> -->
         <hr>
       </div>
       <br><br>
-      <h2>Add Your Comments here ...</h2>
+      <h3>Add Your Comments here ...</h3>
      <form>
         <div class="form-group">
         
           <label for="comment"> Blog Content:</label>
-          <textarea class="form-control" rows="5" ng-model="blogObj.CommentText" id="blogText"></textarea>
-          <button type="button" ng-click="addComment()" class="btn btn-primary" style="margin: 12px 0px;">Add Blog</button>
+          <textarea class="form-control" rows="4" ng-model="blogObj.CommentText" id="blogText"></textarea>
+          <button type="button" ng-click="addComment()" class="btn btn-primary" style="margin: 12px 0px;">Add Comment</button>
        
     </div>
     </form>
       <hr>
-      <div>
-        <ul ng-repeat="comment in commentdata">
-          <li>Comment By: {{comment.UserCommentname}}  ------ Time: {{comment.CommentsDate}}</li>
-          <li>{{comment.CommentText}}</li>
-        </ul>
+      <div ng-repeat="comment in commentdata">
+      <h5>Post by  <span style="color: #337ab7;font-weight: bold;">{{comment.UserCommentname}},</span> <span class="glyphicon glyphicon-time"></span>on {{comment.CommentsDate |date : 'fullDate'}}.</h5>
+       <p style="text-align:justify;">{{comment.CommentText}}</p>
+       <hr>
       </div>
     </div>
