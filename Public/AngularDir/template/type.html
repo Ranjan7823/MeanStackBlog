@@ -1,0 +1,48 @@
+ <div ng-controller="cntrlType">
+ <form class="form-horizontal" style="padding-top: 50px;" >
+<fieldset>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Name (Type)">Type</label>  
+  <div class="col-md-4">
+ <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-user">
+        </i>
+       </div>
+       <input id="Type" name="Type" ng-model="Type.TypeName" type="text" placeholder="Type" class="form-control input-md">
+      </div>
+  </div>
+
+  
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" ></label>  
+  <div class="col-md-4">
+   <button type="button" ng-click="AddType()" class="btn btn-primary" style="margin: 12px 0px;">Add </button>
+  <a href="#" class="btn btn-success" ng-click="AddType();"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
+  <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
+  </div>
+</div>
+
+<div class="col-sm-6 col-md-offset-3">
+<select>
+            <option value = "0" label = "Please Select"></option>
+            <option ng-repeat="type in Type" ng-if=type.TypeName!=null value="{{type.TypeName}}">
+                {{type.TypeName}}
+            </option>
+        </select>
+<hr>
+ <table border=1 class="col-md-6">
+        <tr><td>Type</td><td>Date</td>/tr>
+        <tr ng-repeat="type in Type" ng-if=type.TypeName!=null><td>{{type.TypeName}}</td><td>{{type.CreatedDate | date :'fullDate'}}</td>
+
+        </tr>
+      </table>
+      </div>
+
+
+</fieldset>
+
+</form>
+
+</div>

@@ -1,0 +1,77 @@
+
+<style type=text/css>
+  p {
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+  
+}
+
+ p::before {
+   content: '...';
+   float: right;
+   margin-top: 1.5em;
+}
+.link{
+  cursor: pointer;
+  font-weight: bold;
+  color: #0582b6;
+}
+</style>
+    <div class="col-sm-3 sidenav">
+      <h4>Featured Blogs</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Dash Borad</a></li>
+        <li><a ui-sref="type">Type</a></li>
+        <li><a href="#section3">User Detail</a></li>
+        <li><a href="#section3">All Blog</a></li>
+        <li><a href="#section3">Pending Blog</a></li>
+        
+      </ul><br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-sm-9" ng-controller="CntrlAdmin">
+    
+     <h4><small>RECENT POSTS</small></h4>
+      <hr>
+      <div ng-repeat="blog in blogData" ng-if="blog.isActive=='pending'">
+        <h2>{{blog.Tittle}}</h2>
+
+        <h4>Category : {{blog.Type}}  </h4> <h5><span class="glyphicon glyphicon-time"></span>Post by  <span style="color: #337ab7;font-weight: bold;">{{blog.name}},</span> on {{blog.CreatedDate |date : 'fullDate'}}.</h5>
+
+        <p style="text-align:justify;">{{blog.blogText}}</p>
+         <h5><span><span class="link"><a  ui-sref="blogDetail({ id: blog._id})">Read More ...</a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+      <span> 
+
+       
+              <label class="checkbox-inline"> 
+              <input type="checkbox" ng-model="blog.isActive" ng-click="updateStatus(blog._id);" value="Enable">{{blog.isActive}}</label>&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-danger" ng-click="updateStatus(blog._id)">Post Confirm</button>
+               <button type="button" class="btn btn-danger" ng-click="deleteBlog(blog._id)">Delete Blog</button>
+      </span>
+
+
+
+         </h5>
+        <hr>
+      </div>
+      <br><br>
+      
+      
+     
+    </div>
+  
+    <a ui-sref=".list" class="btn btn-primary">List</a>
+    <a ui-sref=".paragraph" class="btn btn-danger">Paragraph</a>
+    
+
+<div ui-view></div> 

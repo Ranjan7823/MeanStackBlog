@@ -42,7 +42,7 @@
     
      <h4><small>RECENT POSTS</small></h4>
       <hr>
-      <div ng-repeat="blog in blogData">
+      <div ng-repeat="blog in blogData" ng-if="blog.isActive!='pending'">
         <h2>{{blog.Tittle}}</h2>
 
         <h4>Category : {{blog.Type}}  </h4> <h5><span class="glyphicon glyphicon-time"></span>Post by  <span style="color: #337ab7;font-weight: bold;">{{blog.name}},</span> on {{blog.CreatedDate |date : 'fullDate'}}.</h5>

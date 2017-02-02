@@ -4,6 +4,7 @@ var app = express()
 var Blogs = require('../database/schema/blogSchema')
 var BlogsComment = require('../database/schema/blogCommentSchema')
 var swig_Template = require('../template/template_swig');
+var Types =  require('../database/schema/masterType')
 
 var BlogService = {}
 BlogService.SaveBlog=function(req,res){
@@ -47,6 +48,34 @@ BlogService.fetchCommentDetailBlog=function(req,res){
 				}
 				//console.log('--get user own blog-'+blogs)
 				res.send(blogs);})
+}
+
+BlogService.SaveBlogType=function(req,res){
+	var obj={
+		TypeName:req.body.TypeName
+	}
+	var types=new Types(obj);
+	types.save(function(err,data){
+		if(err){
+			console.log(err);
+
+		}console.log('save types');
+		Types.find().sort({_id:-1}).exec(function(err,blogsType){
+			res.send(blogsType)
+		})
+	})
+}
+BlogService.getType=function(req,res){
+	Types.find().sort({_id:-1}).exec(function(err,blogsType){
+			if(err)
+			{
+
+			}
+			else{
+				console.log(blogsType)
+				res.send(blogsType)
+			}
+		})
 }
 // add commemt blog
 BlogService.saveCommentBlog=function(req,res){
@@ -119,7 +148,12 @@ BlogService.getAllBlogFun=function (req,res){
 					console.log(err);
 					return;
 				}
-				//console.log(blogs)
+				var obj={
+					blogs:blogs,
+					UserDetail:req.session.user.name
+
+				}
+				console.log('test for user'+req.session.user.name)
 				res.send(blogs);})
 }
 BlogService.singleBlogDetailById = function(req, res){
@@ -145,5 +179,47 @@ BlogService.singleBlogDetailById = function(req, res){
 		
 	})*/
 }
+BlogService.updateStatusBlog=function(req,res){
+	console.log(req.body._id);
+	var query={_id:req.body._id};
+
+	Blogs.update(query,{'$set': {isActive:'confirm'}},function(err,doc){
+		if(err){
+			console.log(''+err)
+		}else{
+			
+			Blogs.find().sort({_id:-1}).exec(function(err,blogs){
+				if(err){
+					console.log(err);
+					return;
+				}
+				//console.log('--get user own blog-'+blogs)
+				res.send(blogs);})
+
+			
+			//res.send(doc);
+		}
+	})
+}
+BlogService.deleteBlog=function(req,res){
+	
+	Blogs.remove({ _id:req.body._id},function(err, blogs){
+		//Blogs.findOne({_id:req.body.id},function(err,blogs){
+		if(err){
+			console.log(err);
+			return;
+		}
+	Blogs.find(function(err,blogs){
+				if(err){
+					console.log(err);
+					return;
+				}
+				//console.log(blogs)
+				res.send(blogs);
+
+			})
+	})
+}
+
 
 module.exports=BlogService;

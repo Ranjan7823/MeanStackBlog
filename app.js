@@ -84,6 +84,23 @@ app.post('/SaveComment',function(req,res){
 app.post('/fetchCommentBlogsDetail',function(req,res){
 	BlogService.fetchCommentDetailBlog(req,res);
 })
+// admin blog
+app.post('/updateBlogStatus',function(req,res){
+	BlogService.updateStatusBlog(req,res);
+})
+app.post('/deleteBlog',function(req,res){
+	BlogService.deleteBlog(req,res);
+})
+app.get('/userDetail',function(req,res){
+	console.log('test admin'+req.session.user.name)
+	res.send(req.session.user);
+})
+app.post('/addType',function(req,res){
+	BlogService.SaveBlogType(req,res);
+})
+app.get('/getBlogType',function(req,res){
+	BlogService.getType(req,res);
+})
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

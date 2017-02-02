@@ -43,7 +43,7 @@ app.controller('CntrlBlog',function($scope,$http){
 app.controller('CtrlGetBlog',function($scope,$http){
       $http.get('/getAllBlog').success(function(data,status,header,config){
         $scope.blogData=data;
-        console.log('----all Data' +$scope.blogData)
+        console.log('new Object' +$scope.blogData)
 
       }).error(function(data,status,header,config){
         console.log(data);
@@ -110,7 +110,7 @@ console.log('id for save comment'+$stateParams.id);
     var url='/SaveComment';
     var data={id:$stateParams.id,
       CommentText:$scope.blogObj.CommentText};
-   console.log('hjadhajdhajdhajdhaj---'+data)
+   
     var config={
       header:{
         'Content-Type' :'application/json'
