@@ -2,9 +2,13 @@ var express = require('express')
 var app = express()
 var path = require("path");
 var bodyParser = require('body-parser');
-var LoginService = require('./core/service/loginService');
-var BlogService = require('./core/service/blogService');
-var profileService=require('./core/service/profileService');
+//var LoginService = require('./core/service/loginService');
+//var BlogService = require('./core/service/blogService');
+//var profileService=require('./core/service/profileService');
+
+var blogrouter = require('./core/routes/BlogsRoutes.js');
+var userrouter = require('./core/routes/userRoute.js');
+var profileRouters=require('./core/routes//profileRoute.js');
 // session and cookies
 var session = require('client-sessions');
 
@@ -21,7 +25,11 @@ app.use(session({
   ephemeral: true
 }));
 
-app.get('/',function(req,res){
+app.use('/blogs',blogrouter);
+app.use('/',userrouter);
+app.use('/profile',profileRouters);
+
+/*app.get('/',function(req,res){
 	//swig_Template.pagesRendering(req,res);
 	LoginService.firstPageRendering(req,res);
 });
@@ -51,30 +59,30 @@ app.post('/login',function(req,res){
 	LoginService.login(req,res);
 
 })
-
-app.get('/profile',function(req,res){
-	LoginService.renderProfile(req,res);
-})
-app.get('/fetchBlogsData',function(req,res){
+*/
+																		/*app.get('/profile',function(req,res){
+																			LoginService.renderProfile(req,res);
+																		})*/
+/*app.get('/fetchBlogsData',function(req,res){
 				BlogService.fetchBlog(req,res);
-		})
-app.post('/NewBlogSave',function(req,res){
+		})*/
+/*app.post('/NewBlogSave',function(req,res){
 	console.log('---post---'+req.body);
 	BlogService.SaveBlog(req,res);
 })
 app.get('/getAllBlog',function(req,res){
 	BlogService.getAllBlogFun(req,res);
-})
+})*/
 // profile service
-app.post('/profileSave',function(req,res){
+/*app.post('/profileSave',function(req,res){
 
 	profileService.saveProfileDetail(req,res);
 })
 app.get('/getProfile',function(req,res){
 	profileService.getProfileDetail(req,res);
-})
+})*/
 //-----------Blog Data
-app.post('/getSingleBlogDetail',function(req,res){
+/*app.post('/getSingleBlogDetail',function(req,res){
 	BlogService.singleBlogDetailById(req,res);
 })
 app.post('/SaveComment',function(req,res){
@@ -90,17 +98,17 @@ app.post('/updateBlogStatus',function(req,res){
 })
 app.post('/deleteBlog',function(req,res){
 	BlogService.deleteBlog(req,res);
-})
+})*/
 app.get('/userDetail',function(req,res){
 	console.log('test admin'+req.session.user.name)
 	res.send(req.session.user);
 })
-app.post('/addType',function(req,res){
+/*app.post('/addType',function(req,res){
 	BlogService.SaveBlogType(req,res);
 })
 app.get('/getBlogType',function(req,res){
 	BlogService.getType(req,res);
-})
+})*/
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

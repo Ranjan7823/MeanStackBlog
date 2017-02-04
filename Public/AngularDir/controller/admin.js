@@ -1,6 +1,6 @@
 app.controller('CntrlAdmin',function($scope,$http){
 	$scope.blogData={};
-      $http.get('/getAllBlog').success(function(data,status,header,config){
+      $http.get('/blogs/getAllBlog').success(function(data,status,header,config){
         $scope.blogData=data;
         console.log('----all Data' +$scope.blogData)
 
@@ -17,7 +17,7 @@ app.controller('CntrlAdmin',function($scope,$http){
 
 		var id=id;
 		console.log(id);
-		var url='/updateBlogStatus';
+		var url='/blogs/updateBlogStatus';
 		var data={"_id":id};
 		console.log(data);
 		var config={
@@ -34,7 +34,7 @@ app.controller('CntrlAdmin',function($scope,$http){
       }
       $scope.deleteBlog=function(id){
         debugger;
-      	var url='/deleteBlog';
+      	var url='/blogs/deleteBlog';
       	console.log('----'+id)
       	var data={"_id":id};
       	var config={
@@ -70,7 +70,7 @@ app.controller('cntrlType',function($scope,$http){
   debugger;
   $scope.Type={};
   $scope.AddType=function(){
-    var url='/addType';
+    var url='/blogs/addType';
     var data= {
       TypeName:$scope.Type.TypeName
     };
@@ -92,7 +92,7 @@ app.controller('cntrlType',function($scope,$http){
 
   $scope.GetType=function(){
     debugger;
-    $http.get('/getBlogType').success(function (data, status, header, config ){
+    $http.get('/blogs/getBlogType').success(function (data, status, header, config ){
         $scope.Type = data;
         console.log('hgshdgshdgshd'+data)
        })

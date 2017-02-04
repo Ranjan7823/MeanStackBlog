@@ -132,6 +132,8 @@ BlogService.fetchBlog = function(req,res){
 				res.send(blogs);
 
 			})*/
+			console.log('throw  route calling')
+
 
 Blogs.find({name:req.session.user.name}).sort({_id:-1}).exec(function(err,blogs){
 				if(err){
