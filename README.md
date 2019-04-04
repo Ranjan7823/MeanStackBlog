@@ -1,3 +1,2 @@
-# Mean-Stack Blog Exaple 
-Mean stack  blogs Example
-Here i have Used Mongo DB, Exress Js , Node js and Angular 1
+# Mean-Stack-Blog-Example 
+Here i have Used Mongo DB, Express Js, Node js and Angular 1
